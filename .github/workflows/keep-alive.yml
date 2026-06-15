@@ -1,0 +1,18 @@
+name: Keep LinkSnap API Awake
+
+on:
+  schedule:
+    # Runs every 10 minutes. Render's free tier sleeps after 15 minutes
+    # of inactivity, so this keeps it from ever going cold.
+    - cron: "*/10 * * * *"
+  workflow_dispatch: # allows manually triggering from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping LinkSnap API
+        run: |
+          curl -sf --max-time 30 "${{ vars.LINKSNAP_API_URL }}" \
+            && echo "✅ API is awake" \
+            || echo "⚠️ API did not respond (may be cold-starting)"
