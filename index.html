@@ -424,6 +424,11 @@
     background: #ffffff;
   }
 
+  .feature-card > div:nth-child(2) {
+    flex: 1;
+    min-width: 0;
+  }
+
   .feature-card.coming {
     border-style: dashed;
     background: #f7faf8;
@@ -447,7 +452,6 @@
   .feature-sub { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
 
   .feature-badge {
-    margin-left: auto;
     flex-shrink: 0;
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
